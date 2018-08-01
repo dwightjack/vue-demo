@@ -8,15 +8,11 @@
 
 <body>
     <div id="app"class="container-fluid mt-5" style="max-width: 500px">        
-        <form @submit.prevent="add">
-            <div class="form-group">
-                <input class="form-control" type="text" v-model="text">
-            </div>
-            <button class="btn btn-primary" type="submit" :disabled="text.length < 1">Add</button>
-        </form>
-        <ul class="list-group">
-            <li class="list-group-item" v-for="item in items">{{item}}</li>
+        <add-form :on-submit="addItem"></add-form>
+        <ul class="list-group" v-if="items.length > 0">
+            <item v-for="item in items" :key="item" :text="item" />
         </ul>
+        <p v-else>Nothing to show</p>
     </div>
 	<script src="https://unpkg.com/vue@2.5.16/dist/vue.js"></script>
 	<script src="./index.js"></script>
