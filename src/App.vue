@@ -1,28 +1,32 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app" class="container-fluid mt-5" style="max-width: 500px">        
+      <AddForm :on-submit="addItem" />
+      <ul class="list-group" v-if="items.length > 0">
+          <Item v-for="item in items" :key="item" :text="item" />
+      </ul>
+      <p v-else>Nothing to show</p>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Item from './components/Item.vue'
+import AddForm from './components/AddForm.vue'
 
 export default {
-  name: 'app',
+  data: ()  => ({
+    items: []
+  }),
   components: {
-    HelloWorld
+      Item,
+      AddForm
+  },
+  methods: {
+    addItem(value) {
+      this.items.push(value);
+    }
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>
