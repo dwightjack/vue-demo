@@ -1,0 +1,9 @@
+.item-enter-active,
+.item-leave-active {
+    transition: all 0.2s ease-out;
+}
+
+.item-enter {
+    transform: translateY(-5px);
+    opacity: 0;
+}

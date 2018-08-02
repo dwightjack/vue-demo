@@ -2,7 +2,20 @@ const Item = {
     props: {
         text: String
     },
-    template: `<li class="list-group-item">{{text}}</li>`
+    template: `
+    <transition name="item">
+        <li class="list-group-item">{{text}}</li>
+    </transition>
+    `,
+    // methods: {
+    //     onEnter(el, done) {
+    //         TweenMax.from(el, 0.2, {
+    //             y: -5,
+    //             autoAlpha: 0,
+    //             onComplete: () => done()
+    //         })
+    //     }
+    // }
 }
 
 const AddForm = {
