@@ -1,8 +1,13 @@
 <template lang="pug">
   #app.container-fluid.mt-5        
     AddForm(:on-submit="addItem")
-    ul.list-group(v-if="items.length > 0")
-      Item(v-for="item in items" :key="item" :text="item")
+    label
+      input(type="checkbox" v-model="filter") 
+      | Just starting with 'a'
+    div(v-if="items.length > 0")
+      p Count: {{ count }}
+      ul.list-group
+        Item(v-for="item in items" :key="item" :text="item")
     p(v-else) Nothing to show
 </template>
 
@@ -12,8 +17,17 @@ import AddForm from './components/AddForm.vue'
 
 export default {
   data: ()  => ({
-    items: []
+    items: [],
+    filter: false
   }),
+  computed: {
+    count() {
+      if (this.filter) {
+        return this.items.filter((v) => v[0] === 'a').length
+      }
+      return  this.items.length
+    }
+  },
   components: {
       Item,
       AddForm
@@ -21,7 +35,7 @@ export default {
   methods: {
     addItem(value) {
       this.items.push(value);
-    }
+    },
   }
 }
 </script>
