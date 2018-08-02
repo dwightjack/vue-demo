@@ -1,11 +1,9 @@
-<template>
-  <div id="app" class="container-fluid mt-5" style="max-width: 500px">        
-      <AddForm :on-submit="addItem" />
-      <ul class="list-group" v-if="items.length > 0">
-          <Item v-for="item in items" :key="item" :text="item" />
-      </ul>
-      <p v-else>Nothing to show</p>
-  </div>
+<template lang="pug">
+  #app.container-fluid.mt-5        
+    AddForm(:on-submit="addItem")
+    ul.list-group(v-if="items.length > 0")
+      Item(v-for="item in items" :key="item" :text="item")
+    p(v-else) Nothing to show
 </template>
 
 <script>
@@ -29,4 +27,7 @@ export default {
 </script>
 
 <style>
+#app {
+  max-width: 500px
+}
 </style>

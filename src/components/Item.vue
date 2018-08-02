@@ -1,7 +1,6 @@
-<template>
-  <transition name="item">
-    <li class="list-group-item">{{text}}</li>
-  </transition>
+<template lang="pug">
+  transition(name="item")
+    li.list-group-item {{text}}
 </template>
 
 <script>
