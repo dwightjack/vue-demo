@@ -12,36 +12,39 @@
 </template>
 
 <script>
-import Item from './components/Item.vue'
-import AddForm from './components/AddForm.vue'
+import Item from "./components/Item.vue";
+import AddForm from "./components/AddForm.vue";
 
 export default {
-  data: ()  => ({
-    items: [],
+  data: () => ({
+    rawItems: [],
     filter: false
   }),
   computed: {
-    count() {
+    items() {
       if (this.filter) {
-        return this.items.filter((v) => v[0] === 'a').length
+        return this.rawItems.filter(v => v[0] === "a");
       }
-      return  this.items.length
+      return this.rawItems;
+    },
+    count() {
+      return this.items.length;
     }
   },
   components: {
-      Item,
-      AddForm
+    Item,
+    AddForm
   },
   methods: {
     addItem(value) {
-      this.items.push(value);
-    },
+      this.rawItems.push(value);
+    }
   }
-}
+};
 </script>
 
 <style>
 #app {
-  max-width: 500px
+  max-width: 500px;
 }
 </style>
